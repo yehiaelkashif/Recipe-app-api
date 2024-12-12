@@ -14,12 +14,11 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
 
-      # Step 3: Install Docker Compose
-      - name: Install Docker Compose
+      # Step 3: Start Docker service
+      - name: Start Docker Service
         run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-          docker-compose --version  # Verify installation
+          sudo systemctl start docker
+          sudo systemctl status docker
 
       # Step 4: Run Tests
       - name: Test
